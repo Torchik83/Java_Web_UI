@@ -6,10 +6,11 @@ import Views.NavigationBar;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import io.qameta.allure.Step;
 
 public class CRMHomePage extends BasePage {
 
-    private final NavigationBar navigationBar;
+    private NavigationBar navigationBar;
 
     @FindBy(className = "dropdown-toggle")
     private WebElement userMenu;
@@ -17,11 +18,13 @@ public class CRMHomePage extends BasePage {
     @FindBy(className = "no-hash")
     private WebElement userLogout;
 
+    @Step("Клик меню пользователя")
     public CRMHomePage clickUserMenu() {
         userMenu.click();
         return this;
     }
 
+    @Step("Клик Выход")
     public CRMLoginPage clickUserLogout() {
         userLogout.click();
         return new CRMLoginPage(driver);
